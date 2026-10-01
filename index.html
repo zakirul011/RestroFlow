@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f7f2" />
+  <meta name="description" content="RestroFlow by JBD IT brings restaurant orders, tables, kitchen, payments and reports together in one easy-to-use system." />
+  <title>RestroFlow by JBD IT | A better service starts here</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { ink: "#19251f", paper: "#f7f7f2", tomato: "#e94f35", leaf: "#cce86a", moss: "#315943" },
+          fontFamily: { sans: ["DM Sans", "sans-serif"], display: ["DM Serif Display", "serif"] },
+          boxShadow: { float: "0 24px 70px rgba(25, 37, 31, .16)" }
+        }
+      }
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: "DM Sans", sans-serif; }
+    .grain { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E"); }
+    .food-card img { transition: transform .5s ease; }
+    .food-card:hover img { transform: scale(1.05); }
+    .reveal { animation: rise-in .7s both; }
+    @keyframes rise-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body class="bg-paper text-ink antialiased">
+    <header class="sticky top-0 z-50 border-b border-ink/10 bg-paper/95 backdrop-blur">
+        <nav class="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 lg:px-8" aria-label="Main navigation">
+            <a href="#home" class="flex items-center gap-3" aria-label="RestroFlow by JBD IT home">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-tomato text-white"><svg viewBox="0 0 24 24"
+                        class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M4 3v7a4 4 0 0 0 8 0V3M8 3v18m8-18v18m0-18c2.2 0 4 1.8 4 4v3h-4" />
+                    </svg></span>
+                <span class="leading-tight"><span class="block text-[17px] font-bold tracking-tight">RestroFlow</span><span
+                        class="block text-[10px] font-semibold uppercase tracking-[.12em] text-ink/50">by JBD
+                        IT</span></span>
+            </a>
+            <div class="hidden items-center gap-8 text-sm font-medium text-ink/70 md:flex"><a
+                    class="transition hover:text-tomato" href="#solutions">Solutions</a><a
+                    class="transition hover:text-tomato" href="#features">Features</a><a
+                    class="transition hover:text-tomato" href="#pricing">Pricing</a><a class="transition hover:text-tomato"
+                    href="#faq">FAQ</a></div>
+            <div class="hidden items-center gap-3 md:flex"><a href="#contact"
+                    class="px-3 py-2 text-sm font-semibold transition hover:text-tomato">Talk to our team</a><a
+                    href="#pricing"
+                    class="inline-flex items-center gap-2 rounded-lg bg-tomato px-4 py-2.5 text-sm font-bold text-white transition hover:bg-[#cf412c]">Get
+                    started <span aria-hidden="true">↗</span></a></div>
+            <button id="menuButton" class="grid h-10 w-10 place-items-center rounded-lg border border-ink/15 md:hidden"
+                type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><svg class="h-5 w-5"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+                </svg></button>
+        </nav>
+        <div id="mobileMenu" class="hidden border-t border-ink/10 bg-paper px-5 py-4 md:hidden">
+            <div class="grid gap-1 text-sm font-semibold"><a class="rounded-lg px-3 py-3 hover:bg-ink/5"
+                    href="#solutions">Solutions</a><a class="rounded-lg px-3 py-3 hover:bg-ink/5"
+                    href="#features">Features</a><a class="rounded-lg px-3 py-3 hover:bg-ink/5"
+                    href="#pricing">Pricing</a><a class="rounded-lg px-3 py-3 hover:bg-ink/5" href="#faq">FAQ</a><a
+                    class="mt-2 rounded-lg bg-tomato px-4 py-3 text-center text-white" href="#contact">Talk to our team</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="relative overflow-hidden">
+            <div class="grain pointer-events-none absolute inset-0 opacity-20"></div>
+            <div
+                class="mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-14 sm:pb-20 sm:pt-20 lg:grid-cols-[.93fr_1.07fr] lg:gap-10 lg:px-8 lg:pb-24 lg:pt-24">
+                <div class="reveal relative z-10">
+                    <p
+                        class="mb-6 inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white/70 px-3.5 py-2 text-xs font-bold uppercase tracking-[.12em] text-moss">
+                        <span class="h-2 w-2 rounded-full bg-tomato"></span> A smarter service starts here</p>
+                    <h1 class="max-w-[650px] font-display text-[3.2rem] leading-[.99] sm:text-6xl lg:text-[4.45rem]">Your
+                        restaurant,<br />in its <span class="text-tomato">flow state.</span></h1>
+                    <p class="mt-6 max-w-lg text-base leading-7 text-ink/65 sm:text-lg sm:leading-8">One calm place for the
+                        beautiful chaos of service. Orders, tables, kitchen, payments, and the numbers behind it all.</p>
+                    <div class="mt-8 flex flex-col gap-3 sm:flex-row"><a href="#pricing"
+                            class="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-tomato px-6 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#cf412c]">Find
+                            your plan <span aria-hidden="true">↗</span></a><a href="#product"
+                            class="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-ink/20 bg-white/70 px-6 text-sm font-bold transition hover:border-ink/50"><span
+                                class="grid h-6 w-6 place-items-center rounded-full bg-leaf text-xs">▶</span> See how it
+                            works</a></div>
+                    <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium text-ink/60"><span
+                            class="inline-flex items-center gap-2"><span class="text-moss">✓</span> Built for
+                            Bangladesh</span><span class="inline-flex items-center gap-2"><span class="text-moss">✓</span>
+                            Cash, bKash & Nagad</span><span class="inline-flex items-center gap-2"><span
+                                class="text-moss">✓</span> Simple to get started</span></div>
+                </div>
+                <div class="relative mx-auto w-full max-w-[650px] lg:pl-2">
+                    <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-leaf/70 blur-2xl"></div>
+                    <div class="absolute -bottom-8 -left-8 h-40 w-40 rounded-full bg-tomato/20 blur-2xl"></div>
+                    <div class="relative overflow-hidden rounded-[1.35rem] border-[7px] border-white shadow-float"><img
+                            class="h-[300px] w-full object-cover sm:h-[410px]"
+                            src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1400&q=85"
+                            alt="Outdoor restaurant terrace overlooking the water" fetchpriority="high" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-transparent"></div>
+                        <div
+                            class="absolute right-5 top-5 flex max-w-[220px] items-end gap-3 rounded-lg bg-ink/50 p-3 text-white backdrop-blur-sm sm:bottom-7 sm:right-7 sm:top-auto sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
+                            <div class="text-right">
+                                <p class="text-xs font-semibold uppercase tracking-[.16em] text-white/75">Every shift, in
+                                    sync</p>
+                                <p class="mt-1 font-display text-2xl sm:text-3xl">Service, in sync.</p>
+                            </div><span
+                                class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-leaf text-xl text-ink">↗</span>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute -bottom-7 left-3 w-52 rounded-xl border border-ink/5 bg-white p-4 shadow-float sm:-left-7 sm:w-60">
+                        <div class="flex items-center justify-between"><span class="text-xs font-semibold text-ink/55">Today
+                                at a glance</span><span
+                                class="rounded-full bg-[#eef6dc] px-2 py-1 text-[10px] font-bold text-moss">LIVE</span>
+                        </div>
+                        <div class="mt-3 flex items-end justify-between">
+                            <div><span class="block text-[11px] text-ink/50">Orders served</span><strong
+                                    class="mt-0.5 block text-2xl">128</strong></div><span
+                                class="text-xs font-bold text-moss">+12 today</span>
+                        </div>
+                        <div class="mt-3 flex h-8 items-end gap-1"><i class="h-3 flex-1 rounded-t bg-leaf"></i><i
+                                class="h-5 flex-1 rounded-t bg-leaf"></i><i class="h-4 flex-1 rounded-t bg-leaf"></i><i
+                                class="h-7 flex-1 rounded-t bg-tomato"></i><i class="h-5 flex-1 rounded-t bg-leaf"></i><i
+                                class="h-8 flex-1 rounded-t bg-moss"></i><i class="h-6 flex-1 rounded-t bg-leaf"></i><i
+                                class="h-8 flex-1 rounded-t bg-moss"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="border-y border-ink/10 bg-white" aria-label="Restaurant tools">
+            <div
+                class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-8 gap-y-3 px-5 py-6 text-[11px] font-bold uppercase tracking-[.14em] text-ink/50 sm:gap-x-12 lg:px-8">
+                <span>Point of sale</span><span class="text-tomato">✳</span><span>Kitchen display</span><span
+                    class="text-tomato">✳</span><span>Table service</span><span class="text-tomato">✳</span><span>Daily
+                    reports</span><span class="text-tomato">✳</span><span>Local payments</span></div>
+        </section>
+
+        <section id="solutions" class="overflow-hidden py-20 sm:py-24">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+                    <div class="max-w-2xl">
+                        <p class="text-xs font-bold uppercase tracking-[.16em] text-tomato">A fit for your kind of busy</p>
+                        <h2 class="mt-3 font-display text-4xl leading-tight sm:text-5xl">Different kitchens.<br
+                                class="hidden sm:block" /> One smoother service.</h2>
+                    </div>
+                    <div class="flex gap-2 self-end"><button
+                            class="carousel-control grid h-11 w-11 place-items-center rounded-full border border-ink/20 bg-white text-xl transition hover:bg-ink hover:text-white"
+                            type="button" data-direction="-1" aria-label="Scroll restaurant types left">←</button><button
+                            class="carousel-control grid h-11 w-11 place-items-center rounded-full border border-ink/20 bg-white text-xl transition hover:bg-ink hover:text-white"
+                            type="button" data-direction="1" aria-label="Scroll restaurant types right">→</button></div>
+                </div>
+                <div id="restaurantCarousel"
+                    class="mt-9 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                    aria-label="Restaurant types">
+                    <article
+                        class="food-card group relative h-[340px] min-w-[82%] snap-start overflow-hidden rounded-2xl sm:min-w-[46%] lg:min-w-[31.5%]">
+                        <img class="absolute inset-0 h-full w-full object-cover"
+                            src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=85"
+                            alt="Modern restaurant dining room" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent"></div>
+                        <div class="absolute bottom-0 p-6 text-white">
+                            <p class="text-xs font-bold uppercase tracking-[.15em] text-leaf">For the front of house</p>
+                            <h3 class="mt-2 font-display text-3xl">Full-service dining</h3>
+                            <p class="mt-2 max-w-xs text-sm leading-6 text-white/75">Keep tables, tickets, and your team
+                                moving together.</p>
+                        </div>
+                    </article>
+                    <article
+                        class="food-card group relative h-[340px] min-w-[82%] snap-start overflow-hidden rounded-2xl sm:min-w-[46%] lg:min-w-[31.5%]">
+                        <img class="absolute inset-0 h-full w-full object-cover"
+                            src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=85"
+                            alt="Fresh burger served with fries" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent"></div>
+                        <div class="absolute bottom-0 p-6 text-white">
+                            <p class="text-xs font-bold uppercase tracking-[.15em] text-leaf">For the quick turn</p>
+                            <h3 class="mt-2 font-display text-3xl">Quick service</h3>
+                            <p class="mt-2 max-w-xs text-sm leading-6 text-white/75">Ring up, send back, and hand off orders
+                                without a pile-up.</p>
+                        </div>
+                    </article>
+                    <article
+                        class="food-card group relative h-[340px] min-w-[82%] snap-start overflow-hidden rounded-2xl sm:min-w-[46%] lg:min-w-[31.5%]">
+                        <img class="absolute inset-0 h-full w-full object-cover"
+                            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=85"
+                            alt="Cozy neighborhood cafe interior" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent"></div>
+                        <div class="absolute bottom-0 p-6 text-white">
+                            <p class="text-xs font-bold uppercase tracking-[.15em] text-leaf">For your neighborhood spot</p>
+                            <h3 class="mt-2 font-display text-3xl">Cafés & bakeries</h3>
+                            <p class="mt-2 max-w-xs text-sm leading-6 text-white/75">Make menus, takeaway, and daily sales
+                                easier to manage.</p>
+                        </div>
+                    </article>
+                    <article
+                        class="food-card group relative h-[340px] min-w-[82%] snap-start overflow-hidden rounded-2xl sm:min-w-[46%] lg:min-w-[31.5%]">
+                        <img class="absolute inset-0 h-full w-full object-cover"
+                            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=85"
+                            alt="Warmly lit restaurant with set tables" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent"></div>
+                        <div class="absolute bottom-0 p-6 text-white">
+                            <p class="text-xs font-bold uppercase tracking-[.15em] text-leaf">For every seat and ticket</p>
+                            <h3 class="mt-2 font-display text-3xl">Growing groups</h3>
+                            <p class="mt-2 max-w-xs text-sm leading-6 text-white/75">See the bigger picture across your
+                                locations.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="product" class="bg-[#e9eee4] py-20 sm:py-24">
+            <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[.16em] text-moss">One clear view of service</p>
+                    <h2 class="mt-3 max-w-xl font-display text-4xl leading-tight sm:text-5xl">Less switching.<br />More
+                        knowing.</h2>
+                    <p class="mt-5 max-w-lg text-base leading-7 text-ink/65">A practical restaurant system built around the
+                        rhythm of a real shift, from the first order to the final report.</p>
+                    <div class="mt-8 grid gap-5 sm:grid-cols-2">
+                        <div><span class="grid h-9 w-9 place-items-center rounded-lg bg-leaf text-lg">↗</span>
+                            <h3 class="mt-3 font-bold">See what’s happening</h3>
+                            <p class="mt-1 text-sm leading-6 text-ink/60">Orders and sales at a glance, without digging
+                                through screens.</p>
+                        </div>
+                        <div><span class="grid h-9 w-9 place-items-center rounded-lg bg-white text-lg">⌁</span>
+                            <h3 class="mt-3 font-bold">Keep the team in sync</h3>
+                            <p class="mt-1 text-sm leading-6 text-ink/60">One flow from the counter to the kitchen and back
+                                to the guest.</p>
+                        </div>
+                    </div><a href="#features"
+                        class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-moss transition hover:text-tomato">Explore
+                        the features <span aria-hidden="true">→</span></a>
+                </div>
+                <div class="overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-float">
+                    <div class="flex items-center justify-between border-b border-ink/10 px-5 py-4">
+                        <div class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full bg-tomato"></span><span
+                                class="text-sm font-bold">RestroFlow</span></div><span class="text-xs text-ink/45">Tuesday ·
+                            Today</span>
+                    </div>
+                    <div class="grid min-h-[350px] sm:grid-cols-[150px_1fr]">
+                        <aside class="hidden border-r border-ink/10 bg-paper p-4 sm:block">
+                            <p class="mb-4 px-2 text-[10px] font-bold uppercase tracking-[.14em] text-ink/40">Workspace</p>
+                            <div class="space-y-1 text-xs">
+                                <div class="rounded-md bg-moss px-3 py-2.5 font-semibold text-white">Overview</div>
+                                <div class="rounded-md px-3 py-2.5 text-ink/55">Orders</div>
+                                <div class="rounded-md px-3 py-2.5 text-ink/55">Tables</div>
+                                <div class="rounded-md px-3 py-2.5 text-ink/55">Menu</div>
+                                <div class="rounded-md px-3 py-2.5 text-ink/55">Kitchen</div>
+                                <div class="rounded-md px-3 py-2.5 text-ink/55">Reports</div>
+                            </div>
+                        </aside>
+                        <div class="p-4 sm:p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs text-ink/50">Good afternoon</p>
+                                    <h3 class="mt-1 text-xl font-bold">Service overview</h3>
+                                </div><span class="rounded-full bg-[#eef6dc] px-3 py-1.5 text-[10px] font-bold text-moss">●
+                                    OPEN</span>
+                            </div>
+                            <div class="mt-5 grid grid-cols-2 gap-3">
+                                <div class="rounded-lg border border-ink/10 p-3">
+                                    <p class="text-[10px] text-ink/50">Sales today</p>
+                                    <p class="mt-1 text-lg font-bold">৳42,850</p>
+                                    <p class="mt-1 text-[10px] text-moss">+12.5% this week</p>
+                                </div>
+                                <div class="rounded-lg border border-ink/10 p-3">
+                                    <p class="text-[10px] text-ink/50">Orders today</p>
+                                    <p class="mt-1 text-lg font-bold">128</p>
+                                    <p class="mt-1 text-[10px] text-tomato">18 in progress</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 rounded-lg border border-ink/10 p-4">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-xs font-bold">Sales overview</p>
+                                        <p class="mt-1 text-[10px] text-ink/45">Your week, at a glance</p>
+                                    </div><span class="text-[10px] text-ink/45">This week ⌄</span>
+                                </div>
+                                <div class="mt-5 flex h-24 items-end gap-2">
+                                    <div class="h-[38%] flex-1 rounded-t bg-[#dbe5d5]"></div>
+                                    <div class="h-[55%] flex-1 rounded-t bg-[#dbe5d5]"></div>
+                                    <div class="h-[47%] flex-1 rounded-t bg-[#dbe5d5]"></div>
+                                    <div class="h-[75%] flex-1 rounded-t bg-moss/65"></div>
+                                    <div class="h-[60%] flex-1 rounded-t bg-[#dbe5d5]"></div>
+                                    <div class="h-[88%] flex-1 rounded-t bg-tomato"></div>
+                                    <div class="h-[70%] flex-1 rounded-t bg-[#dbe5d5]"></div>
+                                </div>
+                                <div class="mt-2 flex justify-between text-[9px] text-ink/40">
+                                    <span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span><span>Mon</span><span>Tue</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center justify-between rounded-lg bg-paper px-4 py-3">
+                                <div>
+                                    <p class="text-xs font-bold">Kitchen queue</p>
+                                    <p class="mt-1 text-[10px] text-ink/50">Orders sent to preparation</p>
+                                </div><span class="text-lg font-bold">06 <span
+                                        class="text-xs font-medium text-ink/45">tickets</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="bg-[#e9eee4] py-20 sm:py-24">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="text-center">
+                    <p class="text-xs font-bold uppercase tracking-[.16em] text-moss">Straightforward plans</p>
+                    <h2 class="mt-3 font-display text-4xl sm:text-5xl">Good things. Clear prices.</h2>
+                    <p class="mx-auto mt-4 max-w-xl text-sm leading-6 text-ink/60">Choose the setup that suits your service
+                        today. Change your plan as your restaurant grows.</p>
+                    <div
+                        class="mt-7 inline-flex items-center gap-3 rounded-full border border-ink/10 bg-white p-1.5 text-sm">
+                        <span id="monthlyLabel"
+                            class="rounded-full bg-ink px-4 py-2 font-bold text-white">Monthly</span><button
+                            id="billingToggle" type="button" role="switch" aria-checked="false"
+                            aria-label="Toggle annual billing" class="relative h-7 w-12 rounded-full bg-ink/20 transition"
+                            data-annual="false"><span
+                                class="absolute left-1 top-1 h-5 w-5 rounded-full bg-white shadow transition-transform"></span></button><span
+                            id="annualLabel" class="px-2 font-semibold text-ink/55">Yearly <span class="text-moss">Save 2
+                                months</span></span></div>
+                </div>
+                <div class="mt-10 grid gap-4 lg:grid-cols-3">
+                    <article class="flex flex-col rounded-xl border border-ink/15 bg-white p-6 sm:p-7">
+                        <p class="text-xs font-bold uppercase tracking-[.13em] text-ink/50">Starter</p>
+                        <h3 class="mt-3 text-xl font-bold">A better first step</h3>
+                        <p class="mt-2 min-h-10 text-sm leading-5 text-ink/55">For a single-counter cafe or a new
+                            restaurant.</p>
+                        <div class="mt-6 flex items-end gap-1"><span class="text-sm font-semibold">৳</span><strong
+                                class="price text-4xl tracking-tight" data-monthly="1490"
+                                data-yearly="14900">1,490</strong><span class="price-period pb-1 text-sm text-ink/50"
+                                data-monthly="/ month" data-yearly="/ year">/ month</span></div><a href="#contact"
+                            class="mt-6 inline-flex min-h-11 items-center justify-center rounded-lg border border-ink/20 px-4 text-sm font-bold transition hover:border-ink hover:bg-ink hover:text-white">Start
+                            with Starter</a>
+                        <ul class="mt-7 space-y-3 border-t border-ink/10 pt-6 text-sm text-ink/70">
+                            <li>✓ One location</li>
+                            <li>✓ POS and order management</li>
+                            <li>✓ Menu and table management</li>
+                            <li>✓ Daily sales summary</li>
+                            <li>✓ Local payment recording</li>
+                        </ul>
+                    </article>
+                    <article
+                        class="relative flex flex-col rounded-xl border-2 border-moss bg-white p-6 shadow-float sm:p-7">
+                        <span
+                            class="absolute right-4 top-4 rounded-full bg-leaf px-3 py-1 text-[10px] font-bold uppercase tracking-[.1em] text-ink">Most
+                            popular</span>
+                        <p class="text-xs font-bold uppercase tracking-[.13em] text-moss">Growth</p>
+                        <h3 class="mt-3 text-xl font-bold">More in your hands</h3>
+                        <p class="mt-2 min-h-10 text-sm leading-5 text-ink/55">For a busy restaurant ready for a clearer
+                            view.</p>
+                        <div class="mt-6 flex items-end gap-1"><span class="text-sm font-semibold">৳</span><strong
+                                class="price text-4xl tracking-tight" data-monthly="2990"
+                                data-yearly="29900">2,990</strong><span class="price-period pb-1 text-sm text-ink/50"
+                                data-monthly="/ month" data-yearly="/ year">/ month</span></div><a href="#contact"
+                            class="mt-6 inline-flex min-h-11 items-center justify-center rounded-lg bg-moss px-4 text-sm font-bold text-white transition hover:bg-ink">Choose
+                            Growth</a>
+                        <ul class="mt-7 space-y-3 border-t border-ink/10 pt-6 text-sm text-ink/70">
+                            <li>✓ Everything in Starter</li>
+                            <li>✓ Kitchen order display</li>
+                            <li>✓ Expense and purchase tracking</li>
+                            <li>✓ Staff roles and permissions</li>
+                            <li>✓ Detailed sales reports</li>
+                        </ul>
+                    </article>
+                    <article class="flex flex-col rounded-xl border border-ink/15 bg-white p-6 sm:p-7">
+                        <p class="text-xs font-bold uppercase tracking-[.13em] text-ink/50">Multi-location</p>
+                        <h3 class="mt-3 text-xl font-bold">Room to expand</h3>
+                        <p class="mt-2 min-h-10 text-sm leading-5 text-ink/55">For growing teams that need a wider view.</p>
+                        <div class="mt-6 flex items-end gap-1"><span class="text-sm font-semibold">৳</span><strong
+                                class="price text-4xl tracking-tight" data-monthly="6990"
+                                data-yearly="69900">6,990</strong><span class="price-period pb-1 text-sm text-ink/50"
+                                data-monthly="/ month" data-yearly="/ year">/ month</span></div><a href="#contact"
+                            class="mt-6 inline-flex min-h-11 items-center justify-center rounded-lg border border-ink/20 px-4 text-sm font-bold transition hover:border-ink hover:bg-ink hover:text-white">Talk
+                            to our team</a>
+                        <ul class="mt-7 space-y-3 border-t border-ink/10 pt-6 text-sm text-ink/70">
+                            <li>✓ Everything in Growth</li>
+                            <li>✓ Multiple locations</li>
+                            <li>✓ Centralized reporting</li>
+                            <li>✓ Guided onboarding</li>
+                            <li>✓ Priority support</li>
+                        </ul>
+                    </article>
+                </div>
+                <p class="mt-5 text-center text-xs text-ink/50">Illustrative pricing in BDT. Final plan details can be
+                    confirmed with JBD IT.</p>
+            </div>
+        </section>
+
+        <section id="features" class="py-20 sm:py-24">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="max-w-2xl">
+                    <p class="text-xs font-bold uppercase tracking-[.16em] text-tomato">The tools behind a smoother shift
+                    </p>
+                    <h2 class="mt-3 font-display text-4xl leading-tight sm:text-5xl">All the moving parts,<br />moving
+                        together.</h2>
+                </div>
+                <div
+                    class="mt-11 grid gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-3">
+                    <article class="bg-white p-6 sm:p-7"><span
+                            class="grid h-11 w-11 place-items-center rounded-xl bg-[#fce9e4] text-xl text-tomato">▦</span>
+                        <h3 class="mt-5 text-lg font-bold">Fast, simple POS</h3>
+                        <p class="mt-2 text-sm leading-6 text-ink/60">Build orders, choose a table or takeaway, apply
+                            discounts, and create a bill.</p>
+                    </article>
+                    <article class="bg-white p-6 sm:p-7"><span
+                            class="grid h-11 w-11 place-items-center rounded-xl bg-[#edf4df] text-xl text-moss">☷</span>
+                        <h3 class="mt-5 text-lg font-bold">Menu management</h3>
+                        <p class="mt-2 text-sm leading-6 text-ink/60">Organize categories, update prices, and keep
+                            availability current.</p>
+                    </article>
+                    <article class="bg-white p-6 sm:p-7"><span
+                            class="grid h-11 w-11 place-items-center rounded-xl bg-[#fff1d6] text-xl text-[#a76812]">⌘</span>
+                        <h3 class="mt-5 text-lg font-bold">Tables & takeaway</h3>
+                        <p class="mt-2 text-sm leading-6 text-ink/60">Know which tables are busy and keep takeaway tickets
+                            easy to spot.</p>
+                    </article>
+                    <article class="bg-white p-6 sm:p-7"><span
+                            class="grid h-11 w-11 place-items-center rounded-xl bg-[#e8eef8] text-xl text-[#45618e]">▤</span>
+                        <h3 class="mt-5 text-lg font-bold">Kitchen orders</h3>
+                        <p class="mt-2 text-sm leading-6 text-ink/60">Send confirmed tickets to the kitchen with items,
+                            quantities, and table details.</p>
+                    </article>
+                    <article class="bg-white p-6 sm:p-7"><span
+                            class="grid h-11 w-11 place-items-center rounded-xl bg-[#fce9e4] text-xl text-tomato">৳</span>
+                        <h3 class="mt-5 text-lg font-bold">Payments that feel local</h3>
+                        <p class="mt-2 text-sm leading-6 text-ink/60">Record cash, bKash, Nagad, and card payments against
+                            each order.</p>
+                    </article>
+                    <article class="bg-white p-6 sm:p-7"><span
+                            class="grid h-11 w-11 place-items-center rounded-xl bg-[#edf4df] text-xl text-moss">⌁</span>
+                        <h3 class="mt-5 text-lg font-bold">Sales & expenses</h3>
+                        <p class="mt-2 text-sm leading-6 text-ink/60">Bring daily sales, purchases, and expenses into one
+                            useful view.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-ink py-20 text-white sm:py-24">
+            <div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[.8fr_1.2fr] lg:items-center lg:px-8">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[.16em] text-leaf">Made for the way you work</p>
+                    <h2 class="mt-3 font-display text-4xl leading-tight sm:text-5xl">A good shift is a team effort.</h2>
+                    <p class="mt-5 max-w-md text-sm leading-7 text-white/60">Give each person a clear role, from the owner
+                        looking at the numbers to the kitchen focused on the next ticket.</p>
+                </div>
+                <div class="grid gap-3 sm:grid-cols-3">
+                    <article class="rounded-xl border border-white/15 bg-white/[.04] p-5"><span
+                            class="text-xs font-bold text-leaf">01 / OWNER</span>
+                        <h3 class="mt-6 font-bold">The full picture</h3>
+                        <p class="mt-2 text-sm leading-6 text-white/55">Manage menus, staff, expenses, and reports.</p>
+                    </article>
+                    <article class="rounded-xl border border-leaf/60 bg-leaf p-5 text-ink"><span
+                            class="text-xs font-bold text-moss">02 / CASHIER</span>
+                        <h3 class="mt-6 font-bold">A quicker counter</h3>
+                        <p class="mt-2 text-sm leading-6 text-ink/65">Take orders, select tables, and record payments.</p>
+                    </article>
+                    <article class="rounded-xl border border-white/15 bg-white/[.04] p-5"><span
+                            class="text-xs font-bold text-leaf">03 / KITCHEN</span>
+                        <h3 class="mt-6 font-bold">A clearer queue</h3>
+                        <p class="mt-2 text-sm leading-6 text-white/55">See tickets, table numbers, and what’s next.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-20 sm:py-24">
+            <div class="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[.8fr_1.2fr] lg:px-8">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[.16em] text-tomato">A few good questions</p>
+                    <h2 class="mt-3 font-display text-4xl sm:text-5xl">Before the next shift.</h2>
+                    <p class="mt-4 max-w-sm text-sm leading-6 text-ink/60">Still weighing it up? We’re happy to talk through
+                        what would fit your restaurant.</p><a
+                        class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-moss hover:text-tomato"
+                        href="#contact">Ask our team <span aria-hidden="true">↗</span></a>
+                </div>
+                <div class="divide-y divide-ink/15 border-y border-ink/15">
+                    <details class="group py-5" open>
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">What
+                            does RestroFlow help manage?<span
+                                class="text-xl text-tomato transition group-open:rotate-45">+</span></summary>
+                        <p class="mt-3 max-w-2xl text-sm leading-6 text-ink/60">RestroFlow brings point of sale, menus,
+                            tables, kitchen orders, payments, expenses, and sales reporting into one restaurant management
+                            system.</p>
+                    </details>
+                    <details class="group py-5">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">Can I
+                            record bKash and Nagad payments?<span
+                                class="text-xl text-tomato transition group-open:rotate-45">+</span></summary>
+                        <p class="mt-3 max-w-2xl text-sm leading-6 text-ink/60">Yes. The system is designed to record cash,
+                            bKash, Nagad, and card payments against restaurant orders.</p>
+                    </details>
+                    <details class="group py-5">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">Which
+                            plan should I start with?<span
+                                class="text-xl text-tomato transition group-open:rotate-45">+</span></summary>
+                        <p class="mt-3 max-w-2xl text-sm leading-6 text-ink/60">Starter covers core operations for one
+                            location. Growth adds kitchen display and deeper reporting. Multi-location is for teams managing
+                            more than one restaurant.</p>
+                    </details>
+                    <details class="group py-5">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">Can JBD
+                            IT help us get set up?<span class="text-xl text-tomato transition group-open:rotate-45">+</span>
+                        </summary>
+                        <p class="mt-3 max-w-2xl text-sm leading-6 text-ink/60">Get in touch with the JBD IT team to discuss
+                            onboarding and the right configuration for your restaurant.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="px-5 pb-20 sm:pb-24">
+            <div
+                class="grain relative mx-auto max-w-7xl overflow-hidden rounded-2xl bg-tomato px-6 py-12 text-white sm:px-12 sm:py-16 lg:px-16">
+                <div class="relative z-10 grid gap-8 sm:grid-cols-[1fr_auto] sm:items-end">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-[.16em] text-white/70">Your next service can feel
+                            different</p>
+                        <h2 class="mt-3 max-w-2xl font-display text-4xl leading-tight sm:text-5xl">Let’s get your restaurant
+                            in flow.</h2>
+                        <p class="mt-4 max-w-xl text-sm leading-6 text-white/75">Tell JBD IT what your restaurant needs.
+                            We’ll help you find a setup that makes sense.</p>
+                    </div><a href="mailto:hello@jbdit.com"
+                        class="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-leaf px-5 text-sm font-bold text-ink transition hover:bg-white">Talk
+                        to JBD IT <span aria-hidden="true">↗</span></a>
+                </div><span
+                    class="pointer-events-none absolute -bottom-24 -right-3 font-display text-[14rem] leading-none text-white/[.08]"
+                    aria-hidden="true">R</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-ink text-white">
+        <div class="mx-auto max-w-7xl px-5 py-12 lg:px-8">
+            <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+                <div><a href="#home" class="inline-flex items-center gap-3"><span
+                            class="grid h-10 w-10 place-items-center rounded-xl bg-tomato text-white"><svg
+                                viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4 3v7a4 4 0 0 0 8 0V3M8 3v18m8-18v18m0-18c2.2 0 4 1.8 4 4v3h-4" />
+                            </svg></span><span><span class="block font-bold">RestroFlow</span><span
+                                class="block text-[10px] font-semibold uppercase tracking-[.12em] text-white/45">by JBD
+                                IT</span></span></a>
+                    <p class="mt-4 max-w-xs text-sm leading-6 text-white/55">A more connected way to run your restaurant,
+                        built by JBD IT.</p>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-[.14em] text-white/45">Explore</h3>
+                    <div class="mt-4 grid gap-3 text-sm text-white/75"><a href="#solutions"
+                            class="hover:text-leaf">Solutions</a><a href="#features" class="hover:text-leaf">Features</a><a
+                            href="#pricing" class="hover:text-leaf">Pricing</a></div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-[.14em] text-white/45">For your team</h3>
+                    <div class="mt-4 grid gap-3 text-sm text-white/75"><a href="#product" class="hover:text-leaf">Product
+                            overview</a><a href="#faq" class="hover:text-leaf">Frequently asked questions</a><a
+                            href="#contact" class="hover:text-leaf">Contact JBD IT</a></div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-[.14em] text-white/45">Made for Bangladesh</h3>
+                    <p class="mt-4 text-sm leading-6 text-white/75">Local payments.<br />Restaurant-first support.</p>
+                </div>
+            </div>
+            <div
+                class="mt-10 flex flex-col justify-between gap-3 border-t border-white/15 pt-6 text-xs text-white/45 sm:flex-row">
+                <p>© 2026 JBD IT. RestroFlow restaurant management.</p><a href="#home" class="hover:text-white">Back to top
+                    ↑</a>
+            </div>
+        </div>
+    </footer>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuButton.addEventListener("click", () => {
+      const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!isExpanded));
+      mobileMenu.classList.toggle("hidden", isExpanded);
+    });
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+    const carousel = document.getElementById("restaurantCarousel");
+    document.querySelectorAll(".carousel-control").forEach((button) => {
+      button.addEventListener("click", () => carousel.scrollBy({ left: Number(button.dataset.direction) * carousel.clientWidth * 0.8, behavior: "smooth" }));
+    });
+    const billingToggle = document.getElementById("billingToggle");
+    billingToggle.addEventListener("click", () => {
+      const isAnnual = billingToggle.dataset.annual !== "true";
+      billingToggle.dataset.annual = String(isAnnual);
+      billingToggle.setAttribute("aria-checked", String(isAnnual));
+      billingToggle.querySelector("span").classList.toggle("translate-x-5", isAnnual);
+      const monthlyLabel = document.getElementById("monthlyLabel");
+      const annualLabel = document.getElementById("annualLabel");
+      monthlyLabel.classList.toggle("bg-ink", !isAnnual);
+      monthlyLabel.classList.toggle("text-white", !isAnnual);
+      monthlyLabel.classList.toggle("rounded-full", !isAnnual);
+      annualLabel.classList.toggle("rounded-full", isAnnual);
+      annualLabel.classList.toggle("bg-ink", isAnnual);
+      annualLabel.classList.toggle("px-4", isAnnual);
+      annualLabel.classList.toggle("py-2", isAnnual);
+      annualLabel.classList.toggle("text-white", isAnnual);
+      document.querySelectorAll(".price").forEach((price) => {
+        price.textContent = Number(price.dataset[isAnnual ? "yearly" : "monthly"]).toLocaleString("en-BD");
+      });
+      document.querySelectorAll(".price-period").forEach((period) => {
+        period.textContent = period.dataset[isAnnual ? "yearly" : "monthly"];
+      });
+    });
+  </script>
+</body>
+</html>

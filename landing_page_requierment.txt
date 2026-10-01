@@ -1,0 +1,18 @@
+we are software it company jbd it
+create a sass restaurant landing page 
+there will have some mandatory section
+hero
+carousel for restourant cards
+pricing
+features
+others section like index.html
+take idea and design from these referance sites:
+https://kfcbd.com/
+https://www.table22.com/
+https://mobbin.com/
+https://mobbin.com/pricing
+
+provide index.html with tailwindcss used
+
+zakir
+S'O_6EBa

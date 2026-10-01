@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foodora BD | Food, Offers & Restaurants Near You</title>
+  <meta name="description" content="Discover restaurants, offers and delicious food near you. Order takeaway or dine in with Foodora BD." />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              50: '#fff4f1',
+              100: '#ffe5df',
+              500: '#e83b2e',
+              600: '#d92f23',
+              700: '#b8241b',
+              900: '#64140f'
+            }
+          },
+          boxShadow: {
+            soft: '0 20px 60px rgba(15, 23, 42, 0.10)',
+            card: '0 10px 30px rgba(15, 23, 42, 0.08)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #fffdfb; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .hero-pattern {
+      background:
+        radial-gradient(circle at 85% 20%, rgba(255,255,255,.22) 0 80px, transparent 81px),
+        radial-gradient(circle at 75% 75%, rgba(255,255,255,.10) 0 130px, transparent 131px),
+        linear-gradient(135deg, #a71912 0%, #df3427 55%, #f05a3d 100%);
+    }
+    .food-card:hover .food-image { transform: scale(1.06); }
+    .restaurant-card:hover { transform: translateY(-4px); }
+    .restaurant-card { transition: transform .25s ease, box-shadow .25s ease; }
+  </style>
+
+</head>
+
+<body class="text-slate-900 font-inter">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-6">
+
+        <a href="#" class="flex items-center gap-2 shrink-0">
+          <span class="w-10 h-10 rounded-xl bg-brand-600 text-white grid place-items-center font-black text-xl">F</span>
+          <span class="text-xl font-bold tracking-tight">Foodora<span class="text-brand-600">BD</span></span>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
+          <a href="#" class="text-brand-600">Home</a>
+          <a href="#restaurants" class="hover:text-brand-600 transition">Restaurants</a>
+          <a href="#offers" class="hover:text-brand-600 transition">Offers</a>
+          <a href="#categories" class="hover:text-brand-600 transition">Menu</a>
+          <a href="#dine-in" class="hover:text-brand-600 transition">Dine In</a>
+        </nav>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button class="hidden sm:flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2.5 text-sm font-semibold hover:border-brand-300 hover:text-brand-600 transition">
+            <span>🛒</span> Cart
+          </button>
+          <button class="rounded-full bg-slate-900 text-white px-5 py-2.5 text-sm font-bold hover:bg-brand-600 transition">
+            Login
+          </button>
+          <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-xl border border-slate-200 grid place-items-center text-xl">☰</button>
+        </div>
+      </div>
+
+      <div id="mobileMenu" class="hidden lg:hidden pb-5 border-t border-slate-100 pt-4">
+        <div class="grid gap-1 text-sm font-semibold">
+          <a href="#" class="px-3 py-2.5 rounded-lg bg-brand-50 text-brand-600">Home</a>
+          <a href="#restaurants" class="px-3 py-2.5 rounded-lg hover:bg-slate-50">Restaurants</a>
+          <a href="#offers" class="px-3 py-2.5 rounded-lg hover:bg-slate-50">Offers</a>
+          <a href="#categories" class="px-3 py-2.5 rounded-lg hover:bg-slate-50">Menu</a>
+          <a href="#dine-in" class="px-3 py-2.5 rounded-lg hover:bg-slate-50">Dine In</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero-pattern overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="min-h-[590px] lg:min-h-[620px] grid lg:grid-cols-2 items-center gap-12 py-14 lg:py-20">
+
+          <div class="text-white">
+            <div class="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/20 px-4 py-2 text-sm font-semibold backdrop-blur mb-6">
+              <span class="w-2 h-2 rounded-full bg-green-300"></span>
+              Restaurants open near you
+            </div>
+
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[.95]">
+              Great food.<br />
+              <span class="text-orange-100">Right nearby.</span>
+            </h1>
+
+            <p class="mt-6 max-w-xl text-lg sm:text-xl leading-8 text-white/85">
+              Discover your favourite restaurants, grab today's best offers, and order exactly how you want.
+            </p>
+
+            <div class="mt-8 rounded-2xl bg-white p-2 shadow-2xl max-w-2xl">
+              <div class="flex flex-col sm:flex-row gap-2">
+                <div class="flex-1 flex items-center gap-3 px-4 py-3">
+                  <span class="text-xl">📍</span>
+                  <div class="min-w-0">
+                    <p class="text-[11px] uppercase tracking-wider font-bold text-slate-400">Your location</p>
+                    <select class="w-full bg-transparent font-bold text-slate-800 outline-none cursor-pointer">
+                      <option>Terokhadia, Rajshahi</option>
+                      <option>Boalia, Rajshahi</option>
+                      <option>Motihar, Rajshahi</option>
+                      <option>Shaheb Bazar, Rajshahi</option>
+                      <option>Dhaka</option>
+                      <option>Chattogram</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 sm:w-[310px]">
+                  <a href="#restaurants" class="rounded-xl bg-brand-600 text-white font-bold flex items-center justify-center gap-2 hover:bg-brand-700 transition py-4">
+                    🛵 Takeaway
+                  </a>
+                  <a href="#dine-in" class="rounded-xl bg-slate-900 text-white font-bold flex items-center justify-center gap-2 hover:bg-slate-800 transition py-4">
+                    🍽 Dine In
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-white/80">
+              <span>✓ Cash on delivery</span>
+              <span>✓ bKash & Nagad</span>
+              <span>✓ Card payment</span>
+            </div>
+          </div>
+
+          <div class="relative hidden md:block">
+            <div class="absolute -top-8 right-10 bg-white rounded-2xl shadow-2xl p-4 w-52 z-10">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-orange-100 grid place-items-center text-2xl">🍔</div>
+                <div>
+                  <p class="font-bold text-slate-900">Popular today</p>
+                  <p class="text-xs text-slate-500">Classic Burger Combo</p>
+                </div>
+              </div>
+              <div class="mt-3 flex justify-between items-center">
+                <span class="font-black text-brand-600">৳ 299</span>
+                <span class="text-xs font-bold text-green-600">● Available</span>
+              </div>
+            </div>
+
+            <div class="relative mx-auto w-[420px] h-[420px] rounded-full bg-white/10 border border-white/15 backdrop-blur-sm grid place-items-center">
+              <div class="w-[330px] h-[330px] rounded-full bg-orange-100/90 grid place-items-center shadow-2xl">
+                <div class="w-[260px] h-[260px] rounded-full bg-white grid place-items-center shadow-xl text-[125px]">
+                  🍗
+                </div>
+              </div>
+            </div>
+
+            <div class="absolute bottom-2 left-0 bg-white rounded-2xl shadow-2xl p-4 w-56">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full bg-green-100 grid place-items-center">⚡</div>
+                <div>
+                  <p class="font-bold text-slate-900">Fast pickup</p>
+                  <p class="text-xs text-slate-500">Ready when you arrive</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFERS -->
+    <section id="offers" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between gap-6 mb-8">
+          <div>
+            <p class="text-brand-600 font-bold uppercase tracking-widest text-xs">Save more today</p>
+            <h2 class="text-3xl sm:text-4xl font-black mt-2">Today's Offers</h2>
+            <p class="mt-2 text-slate-500">Good food feels even better at a good price.</p>
+          </div>
+          <a href="#" class="hidden sm:block text-sm font-bold text-brand-600 hover:text-brand-700">View all offers →</a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          <article class="rounded-3xl overflow-hidden bg-gradient-to-br from-red-600 to-orange-500 text-white p-7 min-h-[240px] relative">
+            <div class="relative z-10">
+              <span class="inline-flex bg-white/20 rounded-full px-3 py-1 text-xs font-bold">LIMITED OFFER</span>
+              <h3 class="text-2xl font-black mt-5 max-w-[220px]">Family Feast for the whole table</h3>
+              <p class="mt-2 text-white/80 text-sm">Save up to ৳300 on selected family meals.</p>
+              <button class="mt-6 rounded-full bg-white text-brand-700 px-5 py-2.5 text-sm font-bold">Order now</button>
+            </div>
+            <span class="absolute -right-3 -bottom-8 text-[145px] opacity-30">🍗</span>
+          </article>
+
+          <article class="rounded-3xl overflow-hidden bg-slate-900 text-white p-7 min-h-[240px] relative">
+            <div class="relative z-10">
+              <span class="inline-flex bg-white/10 rounded-full px-3 py-1 text-xs font-bold">LUNCH DEAL</span>
+              <h3 class="text-2xl font-black mt-5 max-w-[220px]">Lunch Combo from ৳199</h3>
+              <p class="mt-2 text-white/65 text-sm">Quick meals for busy days, available at selected restaurants.</p>
+              <button class="mt-6 rounded-full bg-white text-slate-900 px-5 py-2.5 text-sm font-bold">Explore deal</button>
+            </div>
+            <span class="absolute -right-2 -bottom-5 text-[135px] opacity-20">🍔</span>
+          </article>
+
+          <article class="rounded-3xl overflow-hidden bg-amber-100 text-slate-900 p-7 min-h-[240px] relative">
+            <div class="relative z-10">
+              <span class="inline-flex bg-amber-200 rounded-full px-3 py-1 text-xs font-bold text-amber-900">WEEKEND SPECIAL</span>
+              <h3 class="text-2xl font-black mt-5 max-w-[220px]">Buy 1 Get 1 on selected items</h3>
+              <p class="mt-2 text-slate-600 text-sm">Check participating restaurants near you.</p>
+              <button class="mt-6 rounded-full bg-slate-900 text-white px-5 py-2.5 text-sm font-bold">See restaurants</button>
+            </div>
+            <span class="absolute -right-1 -bottom-7 text-[135px] opacity-30">🍕</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section id="categories" class="py-16 bg-slate-50 border-y border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between mb-7">
+          <div>
+            <p class="text-brand-600 font-bold uppercase tracking-widest text-xs">Explore</p>
+            <h2 class="text-3xl font-black mt-2">What are you craving?</h2>
+          </div>
+          <a href="#" class="text-sm font-bold text-brand-600">All categories →</a>
+        </div>
+
+        <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+          <button class="category-btn shrink-0 w-28 h-28 rounded-2xl bg-white shadow-card border-2 border-brand-500 grid place-items-center text-center p-3" data-category="all">
+            <span class="text-4xl">🍽️</span><span class="text-xs font-bold mt-1">All</span>
+          </button>
+          <button class="category-btn shrink-0 w-28 h-28 rounded-2xl bg-white shadow-card border border-slate-200 grid place-items-center text-center p-3 hover:border-brand-300" data-category="burger">
+            <span class="text-4xl">🍔</span><span class="text-xs font-bold mt-1">Burgers</span>
+          </button>
+          <button class="category-btn shrink-0 w-28 h-28 rounded-2xl bg-white shadow-card border border-slate-200 grid place-items-center text-center p-3 hover:border-brand-300" data-category="biryani">
+            <span class="text-4xl">🍛</span><span class="text-xs font-bold mt-1">Biryani</span>
+          </button>
+          <button class="category-btn shrink-0 w-28 h-28 rounded-2xl bg-white shadow-card border border-slate-200 grid place-items-center text-center p-3 hover:border-brand-300" data-category="chicken">
+            <span class="text-4xl">🍗</span><span class="text-xs font-bold mt-1">Chicken</span>
+          </button>
+          <button class="category-btn shrink-0 w-28 h-28 rounded-2xl bg-white shadow-card border border-slate-200 grid place-items-center text-center p-3 hover:border-brand-300" data-category="pizza">
+            <span class="text-4xl">🍕</span><span class="text-xs font-bold mt-1">Pizza</span>
+          </button>
+          <button class="category-btn shrink-0 w-28 h-28 rounded-2xl bg-white shadow-card border border-slate-200 grid place-items-center text-center p-3 hover:border-brand-300" data-category="chinese">
+            <span class="text-4xl">🥡</span><span class="text-xs font-bold mt-1">Chinese</span>
+          </button>
+          <button class="category-btn shrink-0 w-28 h-28 rounded-2xl bg-white shadow-card border border-slate-200 grid place-items-center text-center p-3 hover:border-brand-300" data-category="drinks">
+            <span class="text-4xl">🥤</span><span class="text-xs font-bold mt-1">Drinks</span>
+          </button>
+          <button class="category-btn shrink-0 w-28 h-28 rounded-2xl bg-white shadow-card border border-slate-200 grid place-items-center text-center p-3 hover:border-brand-300" data-category="dessert">
+            <span class="text-4xl">🍰</span><span class="text-xs font-bold mt-1">Desserts</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEARBY RESTAURANTS -->
+    <section id="restaurants" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8">
+          <div>
+            <div class="flex items-center gap-2 text-green-600 text-sm font-bold">
+              <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+              Based on your location
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-black mt-2">Restaurants Near You</h2>
+            <p class="mt-2 text-slate-500">Popular places around Terokhadia, Rajshahi.</p>
+          </div>
+
+          <div class="flex gap-2">
+            <select id="locationFilter" class="rounded-xl border border-slate-200 px-4 py-3 text-sm font-bold bg-white outline-none focus:border-brand-500">
+              <option value="all">All locations</option>
+              <option value="terokhadia">Terokhadia</option>
+              <option value="shaheb-bazar">Shaheb Bazar</option>
+              <option value="boalia">Boalia</option>
+              <option value="laxmipur">Laxmipur</option>
+            </select>
+            <button class="hidden sm:block rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold hover:bg-slate-200">Filter</button>
+          </div>
+        </div>
+
+        <div id="restaurantGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <article class="restaurant-card restaurant-item bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-card" data-location="terokhadia" data-category="burger,chicken">
+            <div class="h-48 bg-gradient-to-br from-orange-100 to-red-100 relative grid place-items-center overflow-hidden">
+              <span class="text-[100px]">🍔</span>
+              <span class="absolute top-4 left-4 bg-green-600 text-white rounded-full px-3 py-1 text-xs font-bold">OPEN</span>
+              <span class="absolute top-4 right-4 bg-white/90 rounded-full px-3 py-1 text-xs font-bold">0.8 km</span>
+            </div>
+            <div class="p-5">
+              <div class="flex justify-between gap-3 items-center">
+                <div>
+                  <h3 class="font-black text-lg">Burger Point Rajshahi</h3>
+                  <p class="text-sm text-slate-500 mt-1">Burgers · Fast Food · Chicken</p>
+                </div>
+                <span class="shrink-0 bg-green-50 text-green-700 rounded-lg px-2 py-1 text-sm font-bold">4.7 ★</span>
+              </div>
+              <div class="flex items-center justify-between mt-5 pt-4 border-t border-slate-100">
+                <span class="text-sm text-slate-500">25–35 min · ৳৳</span>
+                <button class="text-sm font-bold text-brand-600">View menu →</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card restaurant-item bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-card" data-location="shaheb-bazar" data-category="biryani,chicken">
+            <div class="h-48 bg-gradient-to-br from-amber-100 to-orange-100 relative grid place-items-center overflow-hidden">
+              <span class="text-[100px]">🍛</span>
+              <span class="absolute top-4 left-4 bg-green-600 text-white rounded-full px-3 py-1 text-xs font-bold">OPEN</span>
+              <span class="absolute top-4 right-4 bg-white/90 rounded-full px-3 py-1 text-xs font-bold">2.1 km</span>
+            </div>
+            <div class="p-5">
+              <div class="flex justify-between gap-3 items-center">
+                <div>
+                  <h3 class="font-black text-lg">Rajshahi Biryani House</h3>
+                  <p class="text-sm text-slate-500 mt-1">Biryani · Bangla Food · Chicken</p>
+                </div>
+                <span class="shrink-0 bg-green-50 text-green-700 rounded-lg px-2 py-1 text-sm font-bold">4.8 ★</span>
+              </div>
+              <div class="flex items-center justify-between mt-5 pt-4 border-t border-slate-100">
+                <span class="text-sm text-slate-500">20–30 min · ৳</span>
+                <button class="text-sm font-bold text-brand-600">View menu →</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card restaurant-item bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-card" data-location="boalia" data-category="pizza,drinks">
+            <div class="h-48 bg-gradient-to-br from-red-100 to-pink-100 relative grid place-items-center overflow-hidden">
+              <span class="text-[100px]">🍕</span>
+              <span class="absolute top-4 left-4 bg-green-600 text-white rounded-full px-3 py-1 text-xs font-bold">OPEN</span>
+              <span class="absolute top-4 right-4 bg-white/90 rounded-full px-3 py-1 text-xs font-bold">2.7 km</span>
+            </div>
+            <div class="p-5">
+              <div class="flex justify-between gap-3 items-center">
+                <div>
+                  <h3 class="font-black text-lg">Laxmi Pizza & Cafe</h3>
+                  <p class="text-sm text-slate-500 mt-1">Pizza · Cafe · Drinks</p>
+                </div>
+                <span class="shrink-0 bg-green-50 text-green-700 rounded-lg px-2 py-1 text-sm font-bold">4.5 ★</span>
+              </div>
+              <div class="flex items-center justify-between mt-5 pt-4 border-t border-slate-100">
+                <span class="text-sm text-slate-500">30–40 min · ৳৳</span>
+                <button class="text-sm font-bold text-brand-600">View menu →</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card restaurant-item bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-card" data-location="terokhadia" data-category="chinese,chicken">
+            <div class="h-48 bg-gradient-to-br from-yellow-100 to-green-100 relative grid place-items-center overflow-hidden">
+              <span class="text-[100px]">🥡</span>
+              <span class="absolute top-4 left-4 bg-green-600 text-white rounded-full px-3 py-1 text-xs font-bold">OPEN</span>
+              <span class="absolute top-4 right-4 bg-white/90 rounded-full px-3 py-1 text-xs font-bold">1.3 km</span>
+            </div>
+            <div class="p-5">
+              <div class="flex justify-between gap-3 items-center">
+                <div>
+                  <h3 class="font-black text-lg">Spice Garden</h3>
+                  <p class="text-sm text-slate-500 mt-1">Chinese · Thai · Chicken</p>
+                </div>
+                <span class="shrink-0 bg-green-50 text-green-700 rounded-lg px-2 py-1 text-sm font-bold">4.6 ★</span>
+              </div>
+              <div class="flex items-center justify-between mt-5 pt-4 border-t border-slate-100">
+                <span class="text-sm text-slate-500">25–35 min · ৳৳</span>
+                <button class="text-sm font-bold text-brand-600">View menu →</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card restaurant-item bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-card" data-location="laxmipur" data-category="biryani,chicken">
+            <div class="h-48 bg-gradient-to-br from-orange-100 to-yellow-100 relative grid place-items-center overflow-hidden">
+              <span class="text-[100px]">🍗</span>
+              <span class="absolute top-4 left-4 bg-green-600 text-white rounded-full px-3 py-1 text-xs font-bold">OPEN</span>
+              <span class="absolute top-4 right-4 bg-white/90 rounded-full px-3 py-1 text-xs font-bold">3.4 km</span>
+            </div>
+            <div class="p-5">
+              <div class="flex justify-between gap-3 items-center">
+                <div>
+                  <h3 class="font-black text-lg">Royal Kitchen</h3>
+                  <p class="text-sm text-slate-500 mt-1">Bangla · Biryani · Grill</p>
+                </div>
+                <span class="shrink-0 bg-green-50 text-green-700 rounded-lg px-2 py-1 text-sm font-bold">4.4 ★</span>
+              </div>
+              <div class="flex items-center justify-between mt-5 pt-4 border-t border-slate-100">
+                <span class="text-sm text-slate-500">35–45 min · ৳৳</span>
+                <button class="text-sm font-bold text-brand-600">View menu →</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card restaurant-item bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-card" data-location="shaheb-bazar" data-category="burger,pizza,drinks">
+            <div class="h-48 bg-gradient-to-br from-purple-100 to-pink-100 relative grid place-items-center overflow-hidden">
+              <span class="text-[100px]">🍟</span>
+              <span class="absolute top-4 left-4 bg-green-600 text-white rounded-full px-3 py-1 text-xs font-bold">OPEN</span>
+              <span class="absolute top-4 right-4 bg-white/90 rounded-full px-3 py-1 text-xs font-bold">2.5 km</span>
+            </div>
+            <div class="p-5">
+              <div class="flex justify-between gap-3 items-center">
+                <div>
+                  <h3 class="font-black text-lg">Urban Bites</h3>
+                  <p class="text-sm text-slate-500 mt-1">Fast Food · Burger · Drinks</p>
+                </div>
+                <span class="shrink-0 bg-green-50 text-green-700 rounded-lg px-2 py-1 text-sm font-bold">4.6 ★</span>
+              </div>
+              <div class="flex items-center justify-between mt-5 pt-4 border-t border-slate-100">
+                <span class="text-sm text-slate-500">20–30 min · ৳৳</span>
+                <button class="text-sm font-bold text-brand-600">View menu →</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="text-center mt-10">
+          <button class="rounded-full border-2 border-slate-900 px-7 py-3.5 text-sm font-bold hover:bg-slate-900 hover:text-white transition">Explore all restaurants</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- POPULAR FOOD -->
+    <section class="py-20 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-8">
+          <p class="text-brand-600 font-bold uppercase tracking-widest text-xs">Popular choices</p>
+          <h2 class="text-3xl sm:text-4xl font-black mt-2">People are ordering</h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <article class="food-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card">
+            <div class="h-48 bg-orange-100 grid place-items-center overflow-hidden">
+              <span class="food-image transition duration-500 text-[105px]">🍔</span>
+            </div>
+            <div class="p-5">
+              <p class="text-xs font-bold text-brand-600">Burger Point Rajshahi</p>
+              <h3 class="font-black text-lg mt-1">Classic Beef Burger</h3>
+              <div class="flex justify-between items-center mt-4">
+                <span class="font-black">৳ 249</span>
+                <button class="w-9 h-9 rounded-full bg-brand-50 text-brand-600 font-black hover:bg-brand-600 hover:text-white">+</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="food-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card">
+            <div class="h-48 bg-amber-100 grid place-items-center overflow-hidden">
+              <span class="food-image transition duration-500 text-[105px]">🍛</span>
+            </div>
+            <div class="p-5">
+              <p class="text-xs font-bold text-brand-600">Rajshahi Biryani House</p>
+              <h3 class="font-black text-lg mt-1">Kacchi Biryani</h3>
+              <div class="flex justify-between items-center mt-4">
+                <span class="font-black">৳ 220</span>
+                <button class="w-9 h-9 rounded-full bg-brand-50 text-brand-600 font-black hover:bg-brand-600 hover:text-white">+</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="food-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card">
+            <div class="h-48 bg-red-100 grid place-items-center overflow-hidden">
+              <span class="food-image transition duration-500 text-[105px]">🍕</span>
+            </div>
+            <div class="p-5">
+              <p class="text-xs font-bold text-brand-600">Laxmi Pizza & Cafe</p>
+              <h3 class="font-black text-lg mt-1">Chicken Cheese Pizza</h3>
+              <div class="flex justify-between items-center mt-4">
+                <span class="font-black">৳ 480</span>
+                <button class="w-9 h-9 rounded-full bg-brand-50 text-brand-600 font-black hover:bg-brand-600 hover:text-white">+</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="food-card bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-card">
+            <div class="h-48 bg-yellow-100 grid place-items-center overflow-hidden">
+              <span class="food-image transition duration-500 text-[105px]">🍗</span>
+            </div>
+            <div class="p-5">
+              <p class="text-xs font-bold text-brand-600">Spice Garden</p>
+              <h3 class="font-black text-lg mt-1">Fried Chicken Bucket</h3>
+              <div class="flex justify-between items-center mt-4">
+                <span class="font-black">৳ 399</span>
+                <button class="w-9 h-9 rounded-full bg-brand-50 text-brand-600 font-black hover:bg-brand-600 hover:text-white">+</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DINE IN -->
+    <section id="dine-in" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-[2rem] bg-slate-950 overflow-hidden text-white">
+          <div class="grid lg:grid-cols-2 items-center">
+            <div class="p-8 sm:p-12 lg:p-16">
+              <span class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-bold tracking-wide">DINE IN MADE SIMPLE</span>
+              <h2 class="text-4xl sm:text-5xl font-black tracking-tight mt-5">Sit down.<br />Scan. Order. Enjoy.</h2>
+              <p class="mt-5 text-slate-300 leading-7 max-w-lg">
+                Choose a restaurant, find your table, scan the QR code and order from your phone. No waiting for a menu or calling a waiter for every item.
+              </p>
+              <div class="mt-8 flex flex-wrap gap-3">
+                <button class="rounded-full bg-brand-600 px-6 py-3.5 font-bold hover:bg-brand-500">Find a restaurant</button>
+                <button class="rounded-full bg-white/10 px-6 py-3.5 font-bold hover:bg-white/15">How it works</button>
+              </div>
+            </div>
+
+            <div class="min-h-[350px] bg-gradient-to-br from-brand-700 via-brand-600 to-orange-500 grid place-items-center relative overflow-hidden">
+              <div class="absolute w-72 h-72 rounded-full bg-white/10 -right-20 -top-20"></div>
+              <div class="absolute w-56 h-56 rounded-full bg-white/10 -left-20 -bottom-20"></div>
+              <div class="relative w-64 h-64 bg-white rounded-3xl shadow-2xl p-5 text-slate-900 rotate-2">
+                <div class="h-full border-2 border-dashed border-slate-300 rounded-2xl grid place-items-center text-center p-5">
+                  <div>
+                    <div class="text-5xl">▦</div>
+                    <p class="font-black text-xl mt-3">Table QR</p>
+                    <p class="text-xs text-slate-500 mt-1">Scan to open menu</p>
+                    <div class="mt-4 grid grid-cols-5 gap-1 w-28 mx-auto opacity-70">
+                      <span class="h-4 bg-slate-900"></span><span class="h-4 bg-white border border-slate-900"></span><span class="h-4 bg-slate-900"></span><span class="h-4 bg-slate-900"></span><span class="h-4 bg-white border border-slate-900"></span>
+                      <span class="h-4 bg-white border border-slate-900"></span><span class="h-4 bg-slate-900"></span><span class="h-4 bg-white border border-slate-900"></span><span class="h-4 bg-slate-900"></span><span class="h-4 bg-slate-900"></span>
+                      <span class="h-4 bg-slate-900"></span><span class="h-4 bg-slate-900"></span><span class="h-4 bg-white border border-slate-900"></span><span class="h-4 bg-slate-900"></span><span class="h-4 bg-slate-900"></span>
+                      <span class="h-4 bg-slate-900"></span><span class="h-4 bg-white border border-slate-900"></span><span class="h-4 bg-slate-900"></span><span class="h-4 bg-white border border-slate-900"></span><span class="h-4 bg-slate-900"></span>
+                      <span class="h-4 bg-white border border-slate-900"></span><span class="h-4 bg-slate-900"></span><span class="h-4 bg-slate-900"></span><span class="h-4 bg-white border border-slate-900"></span><span class="h-4 bg-slate-900"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALL RESTAURANTS / CITY -->
+    <section class="py-20 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <p class="text-brand-600 font-bold uppercase tracking-widest text-xs">More to explore</p>
+          <h2 class="text-3xl sm:text-4xl font-black mt-2">Find food wherever you are</h2>
+          <p class="mt-3 text-slate-500">Browse restaurants by city and discover new places to eat across Bangladesh.</p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mt-8">
+          <button class="bg-white rounded-2xl border border-slate-200 p-5 text-left hover:border-brand-400 hover:shadow-card transition">
+            <span class="text-3xl">🏙️</span><p class="font-black mt-3">Rajshahi</p><p class="text-xs text-slate-500 mt-1">120+ places</p>
+          </button>
+          <button class="bg-white rounded-2xl border border-slate-200 p-5 text-left hover:border-brand-400 hover:shadow-card transition">
+            <span class="text-3xl">🌆</span><p class="font-black mt-3">Dhaka</p><p class="text-xs text-slate-500 mt-1">500+ places</p>
+          </button>
+          <button class="bg-white rounded-2xl border border-slate-200 p-5 text-left hover:border-brand-400 hover:shadow-card transition">
+            <span class="text-3xl">🌊</span><p class="font-black mt-3">Chattogram</p><p class="text-xs text-slate-500 mt-1">200+ places</p>
+          </button>
+          <button class="bg-white rounded-2xl border border-slate-200 p-5 text-left hover:border-brand-400 hover:shadow-card transition">
+            <span class="text-3xl">🌿</span><p class="font-black mt-3">Sylhet</p><p class="text-xs text-slate-500 mt-1">100+ places</p>
+          </button>
+          <button class="bg-white rounded-2xl border border-slate-200 p-5 text-left hover:border-brand-400 hover:shadow-card transition">
+            <span class="text-3xl">🏞️</span><p class="font-black mt-3">Khulna</p><p class="text-xs text-slate-500 mt-1">90+ places</p>
+          </button>
+          <button class="bg-white rounded-2xl border border-slate-200 p-5 text-left hover:border-brand-400 hover:shadow-card transition">
+            <span class="text-3xl">🍽️</span><p class="font-black mt-3">All Cities</p><p class="text-xs text-slate-500 mt-1">Explore all</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+        <span class="text-5xl">🍴</span>
+        <h2 class="text-4xl sm:text-5xl font-black tracking-tight mt-5">What are you eating today?</h2>
+        <p class="mt-4 text-slate-500 max-w-xl mx-auto">Find a nearby restaurant, discover a great deal and get your order started in a few clicks.</p>
+        <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+          <a href="#restaurants" class="rounded-full bg-brand-600 text-white px-8 py-4 font-bold hover:bg-brand-700 transition">Browse restaurants</a>
+          <a href="#offers" class="rounded-full bg-slate-900 text-white px-8 py-4 font-bold hover:bg-slate-800 transition">See today's offers</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 text-slate-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div class="lg:col-span-2">
+          <a href="#" class="flex items-center gap-2 text-white">
+            <span class="w-10 h-10 rounded-xl bg-brand-600 grid place-items-center font-black text-xl">F</span>
+            <span class="text-xl font-bold">Foodora<span class="text-brand-500">BD</span></span>
+          </a>
+          <p class="mt-5 text-sm leading-7 text-slate-400 max-w-sm">A simple way to discover restaurants, offers and food around Bangladesh.</p>
+          <div class="mt-6 flex gap-2">
+            <span class="w-9 h-9 rounded-full bg-white/5 grid place-items-center">f</span>
+            <span class="w-9 h-9 rounded-full bg-white/5 grid place-items-center">in</span>
+            <span class="w-9 h-9 rounded-full bg-white/5 grid place-items-center">◎</span>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-white">Explore</h3>
+          <div class="mt-4 grid gap-3 text-sm text-slate-400">
+            <a href="#restaurants" class="hover:text-white">Restaurants</a>
+            <a href="#offers" class="hover:text-white">Offers</a>
+            <a href="#categories" class="hover:text-white">Food categories</a>
+            <a href="#dine-in" class="hover:text-white">Dine In</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-white">For restaurants</h3>
+          <div class="mt-4 grid gap-3 text-sm text-slate-400">
+            <a href="#" class="hover:text-white">Partner with us</a>
+            <a href="#" class="hover:text-white">Restaurant login</a>
+            <a href="#" class="hover:text-white">Restaurant dashboard</a>
+            <a href="#" class="hover:text-white">Support</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-white">Help</h3>
+          <div class="mt-4 grid gap-3 text-sm text-slate-400">
+            <a href="#" class="hover:text-white">Contact us</a>
+            <a href="#" class="hover:text-white">FAQs</a>
+            <a href="#" class="hover:text-white">Terms & conditions</a>
+            <a href="#" class="hover:text-white">Privacy policy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-7 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-xs text-slate-500">
+        <p>© 2026 Foodora BD. All rights reserved.</p>
+        <p>Made for food lovers in Bangladesh.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const restaurantItems = document.querySelectorAll('.restaurant-item');
+    const locationFilter = document.getElementById('locationFilter');
+
+    let selectedCategory = 'all';
+
+    function filterRestaurants() {
+      const selectedLocation = locationFilter.value;
+
+      restaurantItems.forEach(card => {
+        const locationMatch = selectedLocation === 'all' || card.dataset.location === selectedLocation;
+        const categories = card.dataset.category.split(',');
+        const categoryMatch = selectedCategory === 'all' || categories.includes(selectedCategory);
+
+        card.style.display = locationMatch && categoryMatch ? '' : 'none';
+      });
+    }
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        selectedCategory = button.dataset.category;
+
+        categoryButtons.forEach(btn => {
+          btn.classList.remove('border-2', 'border-brand-500');
+          btn.classList.add('border', 'border-slate-200');
+        });
+
+        button.classList.remove('border', 'border-slate-200');
+        button.classList.add('border-2', 'border-brand-500');
+
+        filterRestaurants();
+        document.getElementById('restaurants').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    locationFilter.addEventListener('change', filterRestaurants);
+  </script>
+</body>
+</html>
